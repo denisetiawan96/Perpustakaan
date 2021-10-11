@@ -25,6 +25,12 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
+
+
+@stack('css')
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -95,17 +101,73 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+
+      <!-- /.sidebar-menu -->
+      
+      <!--coba -->
+       <li class="nav-item">
+            <a href="{{url ('dashboard')}}" class="nav-link {{request()->is('dashboard') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{url ('peminjaman')}}" class="nav-link {{request()->is('peminjaman') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Peminjaman
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{url ('buku')}}" class="nav-link {{request()->is('buku') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Buku
+                </p>
+            </a>
+        </li>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               Data Master
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url ('katalog')}}" class="nav-link {{request()->is('katalog') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Katalog</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url ('penerbit')}}" class="nav-link {{request()->is('penerbit') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Penerbit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url ('pengarang')}}" class="nav-link {{request()->is('pengarang') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pengarang</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url ('anggota')}}" class="nav-link {{request()->is('anggota') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Anggota</p>
+                </a>
           </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+      </ul>
+            
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -117,7 +179,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">@yield('header')</h1>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -195,5 +257,10 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<!-- VUE.JS -->
+<script src="{{ asset('js/vue.js')}}"></script>
+<!-- AXIOS -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+@stack('js')
 </body>
 </html>

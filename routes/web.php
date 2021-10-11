@@ -19,4 +19,31 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'AdminController@dashboard')->name('home');
+
+Auth::routes();
+
+Route::get('dashboard','Admincontroller@dashboard');
+Route::get('peminjaman','Admincontroller@peminjaman');
+Route::get('buku','Admincontroller@buku');
+Route::get('katalog','Admincontroller@katalog');
+Route::get('penerbit','Admincontroller@penerbit');
+Route::get('pengarang','Admincontroller@pengarang');
+Route::get('anggota','Admincontroller@anggota');
+
+Route::group(['prefix' => 'data'], function () {
+	Route::resource('buku', 'BukuController');
+
+	Route::resource('katalog', 'KatalogController');
+
+	Route::resource('penerbit', 'PenerbitController');
+
+	Route::resource('pengarang', 'PengarangController');
+
+	Route::resource('anggota', 'AnggotaController');
+
+	Route::resource('dashboard', 'DashboardController');
+
+	Route::resource('peminjaman', 'PeminjamanController');
+});
+
