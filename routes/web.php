@@ -30,6 +30,7 @@ Route::get('katalog','Admincontroller@katalog');
 Route::get('penerbit','Admincontroller@penerbit');
 Route::get('pengarang','Admincontroller@pengarang');
 Route::get('anggota','Admincontroller@anggota');
+Route::get('test_spatie','Admincontroller@test_spatie');
 
 Route::group(['prefix' => 'data'], function () {
 	Route::resource('buku', 'BukuController');

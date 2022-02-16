@@ -12,10 +12,16 @@ class PeminjamanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+
     {
-         $datas = Peminjaman::all();
-         $datatables = datatables()->of($datas)->addIndexColumn();
+        if ($request->status) {
+            $datas = Peminjaman::where('status', $request->status)->get();
+        } else {
+            $datas = Peminjaman::all();
+        }
+
+        $datatables = datatables()->of($datas)->addIndexColumn();
 
         return $datatables->make(true);
     }

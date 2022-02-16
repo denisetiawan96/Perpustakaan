@@ -9,6 +9,7 @@ use App\Anggota;
 use App\Penerbit;
 use App\Pengarang;
 use App\Peminjaman;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -86,5 +87,13 @@ class AdminController extends Controller
         $data_anggota = Anggota::all();
         
     	return view ('admin.anggota.anggota', compact('data_anggota'));
+    }
+    public function test_spatie()
+    {
+        $role = Role::create(['name' => 'petugas']);
+        $permission = Permission::create(['name' => 'peminjaman']);
+
+        $role->givePermissionTo($permission);
+        $permission->assignRole($role);
     }
 }
